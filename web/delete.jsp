@@ -1,0 +1,368 @@
+<%@page import="za.ac.tut.model.business.Cart"%>
+<!--
+Author:S Mazwi & T Mhlanga
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Remove Cart page</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false);
+		function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- //for-mobile-apps -->
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+<!--web-fonts-->
+<link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<link href="//fonts.googleapis.com/css?family=Tangerine:400,700" rel="stylesheet">
+<!--//web-fonts-->
+</head>
+<body>
+<!-- banner -->
+<div class="banner" id="home">
+<!-- header -->
+<div class="banner-top">
+    <div class="social-bnr-agileits">
+	<ul>
+            <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>					
+	</ul>
+    </div>
+    <div class="contact-bnr-w3-agile">
+        <ul>
+            <li><i class="fa fa-envelope" aria-hidden="true"></i><a href="www.onlineCampusKiosk.co.za">onlineCampusKiosk.com</a></li>
+            <li><i class="fa fa-phone" aria-hidden="true"></i>+27 83 529 3455</li>	
+            <li>
+    <div class="search">
+	<input class="search_box" type="checkbox" id="search_box">
+            <label class="icon-search" for="search_box"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></label>
+	<div class="search_form">
+            <form action="#" method="post">
+		<input type="search" name="Search" placeholder="Search..." required="" />
+		<input type="submit" value="Send" />
+            </form>
+	</div>
+    </div>
+            </li>
+	</ul>
+</div>
+<div class="clearfix"></div>
+</div>
+<header>
+    <div class="container">
+
+	<!-- navigation -->
+<div class="w3_navigation">
+        <nav class="navbar navbar-default">
+		<div class="navbar-header navbar-left">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+			<span class="sr-only">Toggle navigation</span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+                    </button>
+			<div class="w3_navigation_pos">
+				<h1><a href="index.html"><span>O</span>nline <span>K</span>iosk</a></h1>
+			</div>
+                </div>
+<!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+            <nav class="menu menu--miranda">
+		<ul class="nav navbar-nav menu__list">
+                    <li ><a href="index.jsp" class="menu__link" class= "menu__item--current">Home</a></li>
+                    <li ><a href="menu.jsp" class=" menu__link">Menu</a></li>
+                    <li ><a href="traceOrder.jsp" class=" menu__link">CheckOrder</a></li>
+                    <li ><a href="userLogin.jsp" class=" menu__link">Login</a></li>
+                <!-- <li class="menu__item"><a href="management.html" class=" menu__link">Management</a></li>-->
+                <li class="dropdown menu__item">
+                    <a href="#" class="dropdown-toggle menu__link" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">User<span class="caret"></span></a>
+		<ul class="dropdown-menu">
+                    <li><a href="userLogin.jsp">Login</a></li>
+                    <li><a href="signUp.jsp">SignUp</a></li>
+		</ul>
+		</li>
+                    <li class="menu__item"><a href="contact.html" class=" menu__link">Contact</a></li>
+		</ul>
+            </nav>
+	</div>
+	</nav>	
+</div>
+<div class="banner-text">
+       <h2>FABULOUS KOTA & CHIPS AT AFFORDABLE PRICES!</h2>   
+       <h3>Viewing Cart</h3>
+</div>
+<%
+    Cart cart = (Cart)session.getAttribute("cart");
+    if(cart==null){
+        cart = new Cart();
+    }
+%>
+<div class="services-w3layouts" id="services">
+
+    <div class="col-md-6 agitsworkw3ls-grid-6">
+	<div class="info-imgs">
+           <ul>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/p1.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+                            <h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>TPG KOTA</p>
+                            <p>Chips, Russian & Becon</p>
+                            <p>R20.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)1) %></p>
+                            <!--<input type="text" name="category" value="TPG KOTA"/>-->
+                            <!--<input type="text" name="description" value="Chips, Russian & Becon"/>-->
+                            <!--<input type="text" name="price" value="20.00"/>-->
+                            <input type="text" name="item#" value="1" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/p2.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>DSO KOTA</p>
+                            <p>Chips & Russian</p>
+                            <p>R15.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)2) %></p>
+                            <!--<input type="text" name="category" value="DSO KOTA"/>-->
+                            <!--<input type="text" name="description" value="Chips & Russian"/>-->
+                            <!--<input type="text" name="price" value="15.00"/>-->
+                            <input type="text" name="item#" value="2" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/p3.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>IDC KOTA</p>
+                            <p>Chips & Russian, Palony</p>
+                            <p>R15.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)3) %></p>
+                            <!--<input type="text" name="category" value="IDC KOTA"/>-->
+                            <!--<input type="text" name="description" value="Chips & Russian, Palony"/>-->
+                            <!--<input type="text" name="price" value="15.00"/>-->
+                            <input type="text" name="item#" value="3" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/p22.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>Last Number</p>
+                            <p>Ribs, Cheese & Chips</p>
+                            <p>R30.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)4) %></p>
+                            <!--<input type="text" name="category" value="LastNumber"/>-->
+                            <!--<input type="text" name="description" value="Ribs, Cheese & Chips"/>-->
+                            <!--<input type="text" name="price" value="30.00"/>-->
+                            <input type="text" name="item#" value="4" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/c2.JPG" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>Small Chips</p>
+                            <p>Small Chips with Source</p>
+                            <p>R15.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)5) %></p>
+                            <!--<input type="text" name="category" value="Small Chips"/>-->
+                            <!--<input type="text" name="madeOf" value="Small Chips with Source"/>-->
+                            <!--<input type="text" name="price" value="15.00"/>-->
+                            <input type="text" name="item#" value="5" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/c1.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>Medium Chips</p>
+                            <p>Medium Chips with Source</p>
+                            <p>R20.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)6) %></p>
+                            <!--<input type="text" name="category" value="Medium Chips"/>-->
+                            <!--<input type="text" name="description" value="Medium Chips with Source"/>-->
+                            <!--<input type="text" name="price" value="20.00"/>-->
+                            <input type="text" name="item#" value="6" hidden>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+            <li>
+		<div class="gallery-grid1">
+                    <a href="single.html"><img src="image/c7.jpg" alt=" " class="img-responsive"></a>
+			<div class="p-mask">
+			<h4><span>O</span>nline <span>K</span>iosk</h4>
+                        <form action="RemoveItemServlet.do" method="POST">
+                            <p>Large Chips</p>
+                            <p>Large Chips with Source</p>
+                            <p>R25.00</p>
+                            <p>Items in cart: <%=cart.updateQuantity((long)7) %></p>
+                            <!--<input type="text" name="category" value="Large Chips"/>-->
+                            <!--<input type="text" name="madeOf" value="Large Chips with Source"/>-->
+                            <!--<input type="text" name="price" value="25.00"/>-->
+                            <input type="hidden" name="item#" value="7"/>
+                            <input type="text" class="span1" name="qty" value="1"><br>
+                            <button class="btn btn-inverse" type="submit">Remove Cart</button>
+                        </form>
+			</div>
+		</div>
+            </li>
+	</ul>
+	</div>				
+    </div>
+<div class="clearfix"></div>
+	<!-- //Stats -->
+<div class="clearfix"></div>
+</div>
+                            <h3>To update cart click <a href="menu.jsp">here</a></h3><br>
+                         
+<!-- mail -->
+<div class="mail">
+    <div class="mail-grid1">
+	<div class="container">	
+            <h3 class="tittle-w3">Contact <span>Info</span></h3>
+		<div class="col-md-4 mail-agileits-w3layouts">
+		<i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>
+		<div class="contact-right">
+                    <p>Phone</p><span>+27 83 676 8890</span>
+		</div>
+		</div>
+                <div class="col-md-4 mail-agileits-w3layouts">
+		<i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+		<div class="contact-right">
+                    <p>Email</p><a href="www.onlineCampusKiosk.co.za">onlineCampusKiosk.co.za</a>
+		</div>
+		</div>
+		<div class="col-md-4 mail-agileits-w3layouts">
+		<i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>
+		<div class="contact-right">
+                    <p>Address</p><span>M17:103, Sosh 4, TUT South Campus, Soshanguve.</span>
+		</div>
+		</div>
+		<div class="clearfix"></div>
+        </div>
+    </div>
+<div class="copyright-wthree">
+    <p>&copy; 2017 Online Campus Kiosk . All Rights Reserved | Design by S Mazwi & T Mhlanga</p>
+</div>
+<!-- //Footer -->
+
+	<a href="#home" class="scroll" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
+<!-- //smooth scrolling -->
+<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript" src="js/numscroller-1.0.js"></script>
+<script src="js/particles.js"></script>
+<script src="js/app.js"></script>
+<!--gallery-->
+<script type="text/javascript">
+							$(window).load(function() {
+								$("#flexiselDemo1").flexisel({
+									visibleItems:4,
+									animationSpeed: 1000,
+									autoPlay: true,
+									autoPlaySpeed: 3000,    		
+									pauseOnHover: true,
+									enableResponsiveBreakpoints: true,
+									responsiveBreakpoints: { 
+										portrait: { 
+											changePoint:480,
+											visibleItems: 1
+										}, 
+										landscape: { 
+											changePoint:640,
+											visibleItems:2
+										},
+										tablet: { 
+											changePoint:768,
+											visibleItems: 3
+										}
+									}
+								});
+								
+							});
+					</script>
+					<script type="text/javascript" src="js/jquery.flexisel.js"></script>
+
+ <!-- start-smoth-scrolling -->
+<script type="text/javascript" src="js/move-top.js"></script>
+<script type="text/javascript" src="js/easing.js"></script>
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event){		
+			event.preventDefault();
+			$('html,body').animate({scrollTop:$(this.hash).offset().top},1000);
+		});
+	});
+</script>
+<!-- start-smoth-scrolling -->
+<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear' 
+				};
+			*/
+								
+			$().UItoTop({ easingType: 'easeOutQuart' });
+								
+			});
+	</script>
+<!-- //here ends scrolling icon -->
+<!--js for bootstrap working-->
+	<script src="js/bootstrap.js"></script>
+<!-- //for bootstrap working -->
+<!-- script-for-menu -->
+					<script>					
+						$("span.menu").click(function(){
+							$(".top-nav ul").slideToggle("slow" , function(){
+							});
+						});
+					</script>
+					<!-- script-for-menu -->
+</body>
+</html>
